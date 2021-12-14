@@ -12,7 +12,9 @@ const app = Vue.createApp({
 const Rapp = Vue.createApp({
     data(){
         return{
-            product:'Socks'
+            product:'Socks',
+            descriptions:'This is some descriptions'
+            
         }
     }
 })
