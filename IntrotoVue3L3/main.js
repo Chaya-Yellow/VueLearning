@@ -1,5 +1,5 @@
 // createApp 是 Vue 内置的函数
-const app = Vue.createApp({
+const app11 = Vue.createApp({
     data(){
         return{
             product:'Socks',
@@ -9,10 +9,10 @@ const app = Vue.createApp({
     }
 })
 
-const Rapp = Vue.createApp({
+const Rapp =  Vue.createApp({
     data(){
         return{
-            product:'Socks',
+            producter:'Socks',
             descriptions:'This is some descriptions'
             
         }
@@ -22,7 +22,7 @@ const Rapp = Vue.createApp({
 const desp=Vue.createApp({
     data(){
         return{
-            descriptions:'This is some descriptions'
+            descriptions111:'This is some descriptions'
         }
     }
 })
