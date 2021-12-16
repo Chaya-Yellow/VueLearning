@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Vue Mastery</title>
+    <!-- Import Styles -->
+    <link rel="stylesheet" href="./assets/styles.css" />
+    <link rel="stylesheet" href="./style.css"/>
+    <!-- Import Vue.js -->
+    <script src="https://unpkg.com/vue@3.0.11/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="GetProduct">
+      <div class="nav-bar"></div>
+      <div class="cart">Cart({{cart}})</div>
+      <div class="product-display">
+        <div class="product-container">
+          <div class="product-image">
+            <img :class="{'out-of-stock-img':'!inStock'}" :disabled="!inStock":src="image">
+          </div>
+          <div class="product-info">
+            <h1>{{product}}</h1>
+            <a :href="url">These is the course origin</a>
+            <!-- <p v-if="inStock">In Stock</p> -->
+            <!-- <p v-else>Out of Stock</p> -->
+            <!-- <p v-show="inStock">In Stock</p> -->
+            <!-- <p style="display: none;"></p> -->
+            <p v-if="inventory>10">In Stock</p>
+            <p v-else-if="inventory<=10 && inventory > 0">Almost sold out!</p>
+            <p v-else>Out of Stock</p>
+            <p v-show="onSale">On Sale!</p>
+            <ul>
+              <li v-for="detail in delails" :style="styles">{{detail}}</li>
+            </ul>
+            <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)"class="color-circle":style="{backgroundColor:variant.color}">{{variant.color}}  {{variant.size}}</div>
+            <!-- <div v-for="size in sizes" :key="size.id">{{size.yard}}</div> -->
+            <!-- <button class="button" v-on:click="cart +=1">Add to Cart</button> -->
+            <!-- <button class="button" v-on:click="addToCart">Add to Cart</button> -->
+            <br><br>
+            <button class="button1" @click="addToCart" :disabled="!inStock">Add to Cart</button>
+            <button class="button2" @click="decToCart" style="margin-left: 4%;">Decrease to Cart</button>
+            
+        </div>
+      </div>
+      </div>
+
+    </div>
+
+    <div id="RGetProduct">
+      <h1>{{producter}}</h1>
+      <p>{{descriptions}}</p>
+      <!-- <h1 :text="descriptions"></h1> -->
+      <!-- <img :src="image"> -->
+    </div>
+
+    <div id="GetDescription">
+      <p>{{descriptions111}}<p>
+    </div>
+
+
+    <!-- Import Js -->
+    <script src="./main.js"></script>
+
+    <!-- Mount Js -->
+    <script>
+      const mountedApp=app11.mount('#GetProduct')
+      const mountedRApp=Rapp.mount('#RGetProduct')
+      const mountedDesp=desp.mount('#GetDescription')
+    </script>
+<!-- 
+    <script>
+      const mountedRApp=Rapp.mount('#RGetProduct')
+    </script>
+
+    <script>
+      const mountedDesp=desp.mount('#GetDescription')
+    </script> -->
+
+
+
+  </body>
+</html>

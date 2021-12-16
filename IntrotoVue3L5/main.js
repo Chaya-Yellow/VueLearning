@@ -1,56 +1,45 @@
-// createApp 是 Vue 内置的函数
-const app11 = Vue.createApp({
-    data(){
-        return{
-            product:'Socks',
-            image:'./assets/images/socks_blue.jpg',
-            url:'https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3',
-            // inStock:true,
-            inventory:9,
-            onSale:true,
-            delails:['50% cotton','30% wool','20% polyester'],
-            variants:[{id:2234,color:'green',size:'36',image:"./assets/images/socks_green.jpg"},
-                      {id:2235,color:'blue',size:'37',image:"./assets/images/socks_blue.jpg"}],
+const app = Vue.createApp({
+    data() {
+        return {
             cart:0,
-            // sizes:[{id:2234,yard:'36'},
-            //           {id:2235,yard:'37'}]
-            styles:{
-                color:'red',
-                fontSize:'14px'
-            },
-            inStock:false,
-            activeClass:true
+            product: 'Socks',
+            brand: 'Vue Mastery',
+            selectedVariant: 0,
+            details: ['50% cotton', '30% wool', '20% polyester'],
+            variants: [
+              { id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50 },
+              { id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0 },
+            ],
+            // solution
+            onSale: true
+            // solution
         }
     },
-    methods:{
-        addToCart(){
-            this.cart +=1
+    methods: {
+        addToCart() {
+            this.cart += 1
         },
-        updateImage(variantImage){
-            this.image=variantImage
+        updateVariant(index) {
+            this.selectedVariant = index
+        }
+    },
+    computed: {
+        title() {
+            return this.brand + ' ' + this.product
         },
-        decToCart(){
-            if(this.cart>0){
-                this.cart -=1
+        image() {
+            return this.variants[this.selectedVariant].image
+        },
+        inStock() {
+            return this.variants[this.selectedVariant].quantity
+        },
+        // solution
+        saleMessage() {
+            if (this.onSale) {
+                return this.brand + ' ' + this.product + ' is on sale.'
             }
+            return ''
         }
-    }
-})
-
-const Rapp =  Vue.createApp({
-    data(){
-        return{
-            producter:'Socks',
-            descriptions:'This is some descriptions'
-            
-        }
-    }
-})
-
-const desp=Vue.createApp({
-    data(){
-        return{
-            descriptions111:'This is some descriptions'
-        }
+        // solution
     }
 })
